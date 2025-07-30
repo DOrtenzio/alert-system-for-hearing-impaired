@@ -1,4 +1,18 @@
-Lista componenti per progetto ESP32 con microfono e pulsanti:
+Components list for ESP32 SENDER:
+
+1. ESP32 DevKit V1 - 1 piece
+2. Microphone amplifier module GY-MAX4466 - 1 piece
+3. MB102 3.3V/5V breadboard power supply module - 3 pieces (for stock)
+4. 9V battery + battery clip with 2.1x5.5mm jack plug - 1 piece
+5. Standard breadboard - 1 piece
+6. Push buttons (momentary switch) - 2 pieces
+7. 10 kΩ resistors (for pull-up, if not using INPUT_PULLUP in the code) - 2 pieces
+8. Male-male jumper cables for breadboard connections - at least 20 pieces
+9. (Optional) 9V 1A power supply with 2.1x5.5 mm jack plug - 1 piece (alternative to 9V battery)
+
+
+
+Lista componenti per progetto ESP32 SENDER:
 
 1. ESP32 DevKit V1 - 1 pezzo
 2. Modulo amplificatore microfonico GY-MAX4466 - 1 pezzo
@@ -9,8 +23,3 @@ Lista componenti per progetto ESP32 con microfono e pulsanti:
 7. Resistenze da 10 kΩ (per pull-up, se non usi INPUT_PULLUP nel codice) - 2 pezzi
 8. Cavi jumper maschio-maschio per collegamenti breadboard - almeno 20 pezzi
 9. (Opzionale) Alimentatore 9V 1A con spina jack 2.1x5.5 mm - 1 pezzo (in alternativa alla batteria 9V)
-
-Note:
-- Il microfono richiede alimentazione 5V e va collegato all’ingresso analogico GPIO34.
-- I pulsanti vanno collegati tra i pin GPIO0 e GPIO1 e GND, con resistenza di pull-up o configurazione INPUT_PULLUP nel codice.
-- Assicurati che tutti i GND siano collegati insieme.
