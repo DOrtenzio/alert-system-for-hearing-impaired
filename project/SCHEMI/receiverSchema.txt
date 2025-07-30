@@ -1,5 +1,68 @@
 ----------------------------------------
-Schema di collegamento dettagliato ESP32 - Progetto 2
+RECEIVER connection diagram - ITA
+----------------------------------------
+
+Power supply:
+-------------
+- MB102 module powered by 9V DC (jack 2.1x5.5 mm)
+- MB102 lines:
+  - +5V (positive breadboard line)
+  - GND (negative breadboard line)
+- ESP32 VIN (or 5V) -> connect to +5V breadboard line (MB102)
+- ESP32 GND -> connect to the GND line of the breadboard
+
+Components:
+
+1) LED (with 220Ω resistor)
+----------------------------
+- LED Anode (+) -> 220Ω resistor -> GPIO 2 (LED_PIN) ESP32
+- LED Cathode (-) -> GND breadboard
+
+2) DC 3V vibration motor
+--------------------------
+- Motor VCC (+) -> +5V or +3.3V (depending on motor power supply, best use 3.3V or separate power supply from MB102)
+- Motor GND (-) -> MOSFET drain (power channel)
+- Gate MOSFET -> GPIO 4 (VIBRATOR_PIN) ESP32 via 100Ω resistor (optional but recommended)
+- Source MOSFET -> GND breadboard
+- Protection diode (1N4007 or similar) in parallel with motor (anode on GND, cathode on VCC) to protect against spikes
+
+3) Reset button
+-----------------
+- One button terminal -> GPIO 5 (RESET_BUTTON_PIN) ESP32
+- Other button terminal -> GND breadboard
+- Configure GPIO 5 with INPUT_PULLUP in the code, no external resistor required
+
+4) Ultrasonic Sensor HY-SRF05 (5 pin)
+--------------------------------------
+- VCC -> +5V breadboard (MB102)
+- GND -> GND breadboard
+- TRIG -> GPIO 12 (SRF05_TRIG_PIN) ESP32
+- ECHO -> 5V side of the convertit
+- 3.3V side of level converter TXS0108E -> GPIO 13 (SRF05_ECHO_PIN) ESP32
+- RST (sensor reset, if present) -> GND or not connected
+
+5) TXS0108E Logic Level Converter Module (8 channels)
+--------------------------------------------------------
+- VCCA (low voltage side) -> +3.3V breadboard (ESP32)
+- VCCB (high voltage side) -> +5V breadboard (MB102)
+- GND -> GND common breadboard
+- OE (output enable) -> GND (enables the converter)
+- Channel 1:
+  - B1 (5V side) -> HY-SRF05 ECHO pin
+  - A1 (3.3V side) -> GPIO 13 ESP32
+
+6) LCD 16x2 I2C (PCF8574)
+-------------------------
+- VCC -> +5V breadboard (MB102)
+- GND -> GND breadboard
+- SDA -> GPIO 21 ESP32
+- SCL -> GPIO 22 ESP32
+
+
+
+
+----------------------------------------
+Schema di collegamento RECEIVER - ITA
 ----------------------------------------
 
 Alimentazione:
@@ -57,11 +120,3 @@ Componenti:
 - GND -> GND breadboard
 - SDA -> GPIO 21 ESP32
 - SCL -> GPIO 22 ESP32
-
-----------------------------------------
-Note finali:
-- Assicurati di collegare tutti i GND (ESP32, MB102, moduli) insieme per un riferimento comune.
-- Usa INPUT_PULLUP per i pulsanti nel codice per evitare resistenze esterne.
-- Il motore vibrazione va pilotato con un MOSFET o transistor, non collegare direttamente al GPIO ESP32.
-- Verifica se il modulo LCD ha pull-up sulle linee I2C, altrimenti aggiungi resistenze da 4.7kΩ su SDA e SCL.
-- Il convertitore livello TXS0108E è necessario per proteggere l’ESP32 dal 5V del sensore ultrasuoni.
