@@ -1,0 +1,17 @@
++-------------------------------+
+| MB102 alimentato da 9V       |
+| - Linea +: 5V (per ESP32, microfono)  |
+| - Linea -: GND               |
++-------------------------------+
+
+ESP32:
+- Vin ↔ Linea 5V
+- GND ↔ Linea GND
+- GPIO 34 ↔ OUT microfono
+- GPIO 0 ↔ Pulsante REC ↔ GND
+- GPIO 1 ↔ Pulsante TEL ↔ GND
+
+Microfono GY-MAX4466:
+- VCC ↔ 5V
+- GND ↔ GND
+- OUT ↔ GPIO 34

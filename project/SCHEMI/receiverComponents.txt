@@ -1,0 +1,13 @@
+1. ESP32 DevKit V1 - 1 pezzo
+2. Modulo LCD 16x2 con interfaccia I2C (PCF8574) - 1 pezzo
+3. Modulo ultrasuoni HY-SRF05 (5 pin) - 1 pezzo
+4. Modulo convertitore di livello logico bidirezionale TXS0108E (8 canali) - 1 pezzo
+5. Mini motore di vibrazione DC 3V (moneta piatta) - 1 pezzo
+6. LED (qualunque colore) - 1 pezzo
+7. Pulsante tipo "push button" momentaneo - 1 pezzo (reset button)
+8. Modulo alimentazione MB102 per breadboard (3.3V/5V) - 3 pezzi (consigliato per scorta)
+9. Breadboard standard - 1 pezzo
+10. Cavi jumper maschio-maschio - almeno 20 pezzi
+11. Resistenze da 220Ω per LED - 1 pezzo
+12. Resistenza da 10 kΩ per pulsante (pull-up o pull-down, se non usi INPUT_PULLUP) - 1 pezzo
+13. Alimentatore 9V 1A con spina jack 2.1x5.5 mm (o batteria 9V con clip)

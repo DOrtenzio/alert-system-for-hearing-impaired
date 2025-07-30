@@ -1,0 +1,16 @@
+Lista componenti per progetto ESP32 con microfono e pulsanti:
+
+1. ESP32 DevKit V1 - 1 pezzo
+2. Modulo amplificatore microfonico GY-MAX4466 - 1 pezzo
+3. Modulo alimentazione breadboard MB102 3.3V/5V - 3 pezzi (per avere scorta)
+4. Batteria 9V + clip batteria con spina jack 2.1x5.5 mm - 1 pezzo
+5. Breadboard standard - 1 pezzo
+6. Pulsanti tipo "push button" (momentary switch) - 2 pezzi
+7. Resistenze da 10 kΩ (per pull-up, se non usi INPUT_PULLUP nel codice) - 2 pezzi
+8. Cavi jumper maschio-maschio per collegamenti breadboard - almeno 20 pezzi
+9. (Opzionale) Alimentatore 9V 1A con spina jack 2.1x5.5 mm - 1 pezzo (in alternativa alla batteria 9V)
+
+Note:
+- Il microfono richiede alimentazione 5V e va collegato all’ingresso analogico GPIO34.
+- I pulsanti vanno collegati tra i pin GPIO0 e GPIO1 e GND, con resistenza di pull-up o configurazione INPUT_PULLUP nel codice.
+- Assicurati che tutti i GND siano collegati insieme.

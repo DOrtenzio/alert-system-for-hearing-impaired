@@ -1,0 +1,67 @@
+----------------------------------------
+Schema di collegamento dettagliato ESP32 - Progetto 2
+----------------------------------------
+
+Alimentazione:
+-------------
+- Modulo MB102 alimentato da 9V DC (jack 2.1x5.5 mm)
+- MB102 linee:
+  - +5V (linea positiva breadboard)
+  - GND (linea negativa breadboard)
+- ESP32 VIN (o 5V) -> collegare alla linea +5V della breadboard (MB102)
+- ESP32 GND -> collegare alla linea GND della breadboard
+
+Componenti:
+
+1) LED (con resistenza 220Ω)
+----------------------------
+- LED Anodo (+) -> Resistenza 220Ω -> GPIO 2 (LED_PIN) ESP32
+- LED Catodo (-) -> GND breadboard
+
+2) Motore vibrazione DC 3V
+--------------------------
+- Motore VCC (+) -> +5V o +3.3V (a seconda di alimentazione motore, meglio usare 3.3V o alimentazione separata da MB102)
+- Motore GND (-) -> Drenatore MOSFET (canale di potenza)
+- Gate MOSFET -> GPIO 4 (VIBRATOR_PIN) ESP32 tramite resistenza da 100Ω (opzionale ma consigliata)
+- Source MOSFET -> GND breadboard
+- Diodo di protezione (1N4007 o simile) in parallelo al motore (anodo sul GND, catodo sul VCC) per proteggere da picchi
+
+3) Pulsante Reset
+-----------------
+- Un terminale pulsante -> GPIO 5 (RESET_BUTTON_PIN) ESP32
+- Altro terminale pulsante -> GND breadboard
+- Configurare GPIO 5 con INPUT_PULLUP nel codice, non serve resistenza esterna
+
+4) Sensore Ultrasuoni HY-SRF05 (5 pin)
+--------------------------------------
+- VCC -> +5V breadboard (MB102)
+- GND -> GND breadboard
+- TRIG -> GPIO 12 (SRF05_TRIG_PIN) ESP32
+- ECHO -> Lato 5V del convertitore livello TXS0108E (canale 1)
+- Lato 3.3V del convertitore livello TXS0108E -> GPIO 13 (SRF05_ECHO_PIN) ESP32
+- RST (reset del sensore, se presente) -> GND o non collegato
+
+5) Modulo Convertitore livello logico TXS0108E (8 canali)
+--------------------------------------------------------
+- VCCA (lato bassa tensione) -> +3.3V breadboard (ESP32)
+- VCCB (lato alta tensione) -> +5V breadboard (MB102)
+- GND -> GND comune breadboard
+- OE (output enable) -> GND (abilita il convertitore)
+- Canale 1:
+  - B1 (5V lato) -> HY-SRF05 ECHO pin
+  - A1 (3.3V lato) -> GPIO 13 ESP32
+
+6) LCD 16x2 I2C (PCF8574)
+-------------------------
+- VCC -> +5V breadboard (MB102)
+- GND -> GND breadboard
+- SDA -> GPIO 21 ESP32
+- SCL -> GPIO 22 ESP32
+
+----------------------------------------
+Note finali:
+- Assicurati di collegare tutti i GND (ESP32, MB102, moduli) insieme per un riferimento comune.
+- Usa INPUT_PULLUP per i pulsanti nel codice per evitare resistenze esterne.
+- Il motore vibrazione va pilotato con un MOSFET o transistor, non collegare direttamente al GPIO ESP32.
+- Verifica se il modulo LCD ha pull-up sulle linee I2C, altrimenti aggiungi resistenze da 4.7kΩ su SDA e SCL.
+- Il convertitore livello TXS0108E è necessario per proteggere l’ESP32 dal 5V del sensore ultrasuoni.
