@@ -1,38 +1,40 @@
-SENDER DIAGRAM - ENG
-+------------------------------+
-| MB102 powered by 9V |
-| - Line +: 5V (for ESP32, microphone) |
-| - Line -: GND |
-+------------------------------+
+# SENDER DIAGRAM - ENG
 
-ESP32:
+| MB102 powered by 9V       |
+|---------------------------|
+| - Line +: 5V (for ESP32, microphone) |
+| - Line -: GND             |
+
+**ESP32:**
 - Vin ↔ Line 5V
 - GND ↔ Line GND
 - GPIO 34 ↔ Microphone OUT
 - GPIO 0 ↔ REC Button ↔ GND
 - GPIO 1 ↔ TEL Button ↔ GND
 
-GY-MAX4466 Microphone:
+**GY-MAX4466 Microphone:**
 - VCC ↔ 5V
 - GND ↔ GND
 - OUT ↔ GPIO 34
 
 
-SCHEMA SENDER - ITA
-+-------------------------------+
-| MB102 alimentato da 9V       |
-| - Linea +: 5V (per ESP32, microfono)  |
-| - Linea -: GND               |
-+-------------------------------+
+---
 
-ESP32:
+# SCHEMA SENDER - ITA
+
+| MB102 alimentato da 9V       |
+|------------------------------|
+| - Linea +: 5V (per ESP32, microfono) |
+| - Linea -: GND               |
+
+**ESP32:**
 - Vin ↔ Linea 5V
 - GND ↔ Linea GND
 - GPIO 34 ↔ OUT microfono
 - GPIO 0 ↔ Pulsante REC ↔ GND
 - GPIO 1 ↔ Pulsante TEL ↔ GND
 
-Microfono GY-MAX4466:
+**Microfono GY-MAX4466:**
 - VCC ↔ 5V
 - GND ↔ GND
 - OUT ↔ GPIO 34
